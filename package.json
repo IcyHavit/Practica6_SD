@@ -1,0 +1,25 @@
+{
+  "name": "practica6_sd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IcyHavit/Practica6_SD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/IcyHavit/Practica6_SD/issues"
+  },
+  "homepage": "https://github.com/IcyHavit/Practica6_SD#readme",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "express": "^5.1.0"
+  }
+}
