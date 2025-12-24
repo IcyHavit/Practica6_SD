@@ -142,7 +142,7 @@ function showToast(msg, isError){
   toast.textContent = msg;
   toast.style.background = isError ? 'var(--danger)' : '#111827';
   toast.classList.add('show');
-  setTimeout(()=>{ toast.classList.remove('show'); }, 3000);
+  setTimeout(()=>{ toast.classList.remove('show'); }, 8081);
 }
 
 // arrancar

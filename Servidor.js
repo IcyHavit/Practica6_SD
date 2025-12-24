@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 8081;
 
 // Middleware para manejar solicitudes con cuerpos JSON
 app.use(express.json());
@@ -58,5 +58,5 @@ app.use(express.static('public'));
 
 // Iniciar el servidor
 app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
+  console.log(`Servidor escuchando en http://18.223.173.173:${port}`);
 });

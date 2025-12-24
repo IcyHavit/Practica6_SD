@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 // URL de nuestro servidor
-const baseUrl = 'http://localhost:3000/productos';
+const baseUrl = 'http://18.223.173.173:8081/productos';
 
 // Obtener todos los productos
 async function obtenerProductos() {
