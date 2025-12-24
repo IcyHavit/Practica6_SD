@@ -53,6 +53,9 @@ app.delete('/productos/:id', (req, res) => {
   res.status(204).send();
 });
 
+// Servir archivos estáticos desde 'public'
+app.use(express.static('public'));
+
 // Iniciar el servidor
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
