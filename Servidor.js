@@ -1,28 +1,30 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 
-// Middleware para manejar solicitudes con cuerpos JSON
+// 🔴 CAMBIO CLAVE AQUÍ
+const port = process.env.PORT || 8081;
+
+// Middleware
 app.use(express.json());
 
-// "Base de datos" temporal en memoria (en producción, usaríamos una base de datos real)
+// Datos en memoria
 let productos = [
   { id: 1, nombre: 'Café', precio: 50.0 },
   { id: 2, nombre: 'Té', precio: 30.0 }
 ];
 
-// Ruta para obtener todos los productos
+// Rutas API
 app.get('/productos', (req, res) => {
   res.json(productos);
 });
 
-// Ruta para obtener un producto por su ID
 app.get('/productos/:id', (req, res) => {
   const producto = productos.find(p => p.id === parseInt(req.params.id));
   if (!producto) return res.status(404).send('Producto no encontrado');
   res.json(producto);
 });
 
-// Ruta para agregar un nuevo producto
 app.post('/productos', (req, res) => {
   const { nombre, precio } = req.body;
   const nuevoProducto = {
@@ -34,7 +36,6 @@ app.post('/productos', (req, res) => {
   res.status(201).json(nuevoProducto);
 });
 
-// Ruta para actualizar un producto
 app.put('/productos/:id', (req, res) => {
   const { nombre, precio } = req.body;
   const producto = productos.find(p => p.id === parseInt(req.params.id));
@@ -44,7 +45,6 @@ app.put('/productos/:id', (req, res) => {
   res.json(producto);
 });
 
-// Ruta para eliminar un producto
 app.delete('/productos/:id', (req, res) => {
   const index = productos.findIndex(p => p.id === parseInt(req.params.id));
   if (index === -1) return res.status(404).send('Producto no encontrado');
@@ -52,12 +52,15 @@ app.delete('/productos/:id', (req, res) => {
   res.status(204).send();
 });
 
-// Servir archivos estáticos desde 'public'
-app.use(express.static('public'));
+// 🔹 Servir frontend
+app.use(express.static(path.join(__dirname, 'public')));
 
-const port = process.env.PORT || 8081;
-
-app.listen(port, () => {
-  console.log(`Servidor escuchando en puerto ${port}`);
+// 🔹 Ruta raíz
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// 🔹 Iniciar servidor
+app.listen(port, () => {
+  console.log(`Servidor Express activo en puerto ${port}`);
+});
